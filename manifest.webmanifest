@@ -1,0 +1,10 @@
+{
+  "name": "METROPOLIS: Genesis",
+  "short_name": "Metropolis",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#111821",
+  "orientation": "any",
+  "icons": []
+}
