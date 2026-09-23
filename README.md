@@ -1,28 +1,37 @@
 # METROPOLIS: Genesis
 
-Protótipo jogável de um city builder original para navegador. A experiência combina construção por grade, zoneamento, crescimento procedural, orçamento, população, empregos, tráfego, serviços, ciclo dia/noite e salvamento local.
+Prototipo jogavel de city builder em navegador, com visual original, mecânicas de gestão urbana, simulação de tráfego e crescimento da cidade.
 
-## Executar
+## Como abrir
 
-Abra `index.html` no navegador. Não há dependências nem assets de terceiros: a cidade é desenhada proceduralmente em Canvas para manter uma identidade visual própria.
+Basta abrir o arquivo `index.html` em qualquer navegador moderno.
 
 ## Controles
 
-- Arraste no mapa para construir estradas ou pintar zonas.
-- Clique em uma célula para construir serviços e prédios especiais.
-- Botão direito ou ESC cancela a ferramenta.
-- Espaço pausa/retoma o tempo.
-- Mouse wheel aproxima e afasta.
-- Os botões Salvar e Carregar usam `localStorage`.
+- `V` — inspeção
+- `R` — estrada
+- `1` — zona residencial
+- `2` — zona comercial
+- `3` — zona industrial
+- `B` — demolir
+- `Espaço` — pausar/continuar
+- `Mouse` — construir, demolir, inspecionar
+- `Roda do mouse` — zoom da câmera
 
-## Escopo atual
+## Sistema atual
 
-- Estradas com cruzamentos e custo por célula.
-- Zonas residencial, comercial e industrial.
-- Crescimento automático condicionado a acesso viário, demanda e serviços.
-- Residentes, empregos e tráfego simulados em escala agregada.
-- Energia, água, felicidade, poluição e orçamento.
-- Escola, clínica, parque, delegacia e bombeiros.
-- Ciclo visual de dia/noite, clima e mapa de calor de tráfego.
+- Grid de construção com mapa urbano.
+- Estradas, zonas, serviços públicos e demolição.
+- Simulação de população, empregos, orçamento, felicidade, tráfego e poluição.
+- Ciclo de dia e noite.
+- Salvamento em `localStorage`.
+- Visual próprio, sem copiar assets ou elementos reconhecíveis de outros jogos.
 
-A direção visual, nomes, edifícios e símbolos são originais; a referência é apenas o gênero city builder, não assets ou elementos reconhecíveis de outros jogos.
+## Objetivo do protótipo
+
+Criar uma base funcional para expandir em:
+- telas de interface mais robustas
+- serviços públicos adicionais
+- melhores rotas de veículos
+- sistema de economia e políticas urbanas
+- expansão para VR/MR no futuro

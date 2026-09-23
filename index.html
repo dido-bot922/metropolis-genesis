@@ -1,54 +1,156 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>METROPOLIS: Genesis</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">✦</span><div><strong>METROPOLIS</strong><small>GENESIS / PROTO 0.1</small></div></div>
-    <div class="city-title"><span class="live-dot"></span> Aurora Valley <em id="dateLabel">Dia 1 · 08:00</em></div>
-    <div class="top-actions"><button id="saveBtn">Salvar</button><button id="loadBtn">Carregar</button><button id="helpBtn" class="icon-btn">?</button></div>
-  </header>
-  <main class="shell">
-    <aside class="left-panel glass">
-      <div class="panel-heading"><span>CONSTRUÇÃO</span><i id="toolLabel">Selecione uma ferramenta</i></div>
-      <div class="tool-grid">
-        <button class="tool active" data-tool="inspect"><b>⌖</b><span>Inspecionar</span><kbd>V</kbd></button>
-        <button class="tool" data-tool="road"><b>╱</b><span>Estrada</span><kbd>R</kbd></button>
-        <button class="tool" data-tool="residential"><b>▦</b><span>Residencial</span><kbd>1</kbd></button>
-        <button class="tool" data-tool="commercial"><b>▤</b><span>Comercial</span><kbd>2</kbd></button>
-        <button class="tool" data-tool="industrial"><b>▥</b><span>Industrial</span><kbd>3</kbd></button>
-        <button class="tool" data-tool="bulldoze"><b>⌫</b><span>Demolir</span><kbd>B</kbd></button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>METROPOLIS: Genesis</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <div>
+          <strong>METROPOLIS</strong>
+          <small>GENESIS / PROTO v2</small>
+        </div>
       </div>
-      <div class="divider"></div>
-      <div class="section-label">SERVIÇOS PÚBLICOS</div>
-      <div class="service-list">
-        <button class="service" data-tool="school"><span class="service-icon blue">✧</span><span><strong>Escola Aurora</strong><small>Educação · $ 1.200</small></span></button>
-        <button class="service" data-tool="clinic"><span class="service-icon pink">✚</span><span><strong>Clínica Horizonte</strong><small>Saúde · $ 1.600</small></span></button>
-        <button class="service" data-tool="park"><span class="service-icon green">♧</span><span><strong>Parque Linear</strong><small>Bem-estar · $ 500</small></span></button>
-        <button class="service" data-tool="police"><span class="service-icon violet">◆</span><span><strong>Posto de segurança</strong><small>Segurança · $ 1.000</small></span></button>
+
+      <div class="city-title">
+        <span class="live-dot"></span>
+        <span>Aurora Valley</span>
+        <em id="dateLabel">Dia 1 · 08:00</em>
       </div>
-      <div class="tip"><b>IDEIA RÁPIDA</b><br>Conecte as zonas às estradas. Casas precisam de empregos próximos para a cidade prosperar.</div>
-    </aside>
-    <section class="viewport-wrap">
-      <canvas id="cityCanvas"></canvas>
-      <div class="map-chips"><span>▣ 2.4 km²</span><span id="weatherChip">☼ Céu limpo</span></div>
-      <div class="toast" id="toast"></div>
-      <div class="inspect-card glass hidden" id="inspectCard"><button class="close" id="closeInspect">×</button><div class="eyebrow">VISÃO GERAL</div><h2 id="inspectTitle">Terreno vazio</h2><p id="inspectText">Escolha uma ferramenta no painel para começar.</p></div>
-      <div class="bottom-bar glass"><div class="legend"><span><i class="dot res"></i>Residencial</span><span><i class="dot com"></i>Comercial</span><span><i class="dot ind"></i>Industrial</span></div><div class="time-controls"><button id="pauseBtn">Ⅱ</button><button data-speed="1" class="speed active">1×</button><button data-speed="2" class="speed">2×</button><button data-speed="4" class="speed">4×</button></div></div>
-    </section>
-    <aside class="right-panel glass">
-      <div class="finance"><div><small>CAIXA DISPONÍVEL</small><strong id="money">$ 24.800</strong></div><span class="trend positive">↗ <b id="income">$ 320/dia</b></span></div>
-      <div class="metrics"><div><small>POPULAÇÃO</small><strong id="population">24</strong><span id="popTrend">+2 hoje</span></div><div><small>FELICIDADE</small><strong id="happiness">78%</strong><span class="positive">estável</span></div><div><small>TRÁFEGO</small><strong id="traffic">12%</strong><span id="trafficState" class="positive">fluido</span></div><div><small>EMPREGO</small><strong id="jobs">18 / 24</strong><span id="jobState" class="positive">saudável</span></div></div>
-      <div class="divider"></div><div class="section-label">DEMANDA DA CIDADE</div>
-      <div class="demand"><label><span><i class="dot res"></i>Residencial</span><b id="resDemand">62%</b></label><div class="bar"><i class="res-fill" id="resBar"></i></div><label><span><i class="dot com"></i>Comercial</span><b id="comDemand">38%</b></label><div class="bar"><i class="com-fill" id="comBar"></i></div><label><span><i class="dot ind"></i>Industrial</span><b id="indDemand">28%</b></label><div class="bar"><i class="ind-fill" id="indBar"></i></div></div>
-      <div class="divider"></div><div class="section-label">REDE URBANA</div><div class="utility"><div><span>⚡ Energia</span><b id="power">● 100%</b></div><div><span>◒ Água</span><b id="water">● 100%</b></div><div><span>♨ Poluição</span><b id="pollution">● 8%</b></div></div>
-      <button class="wide-btn" id="heatBtn">⌁ Mostrar mapa de tráfego</button>
-    </aside>
-  </main>
-  <script src="app.js"></script>
-</body>
+
+      <div class="top-actions">
+        <button id="saveBtn">Salvar</button>
+        <button id="loadBtn">Carregar</button>
+        <button id="helpBtn" class="icon-btn">?</button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <aside class="left-panel glass">
+        <div class="panel-heading">
+          <span>CONSTRUÇÃO</span>
+          <i id="toolLabel">Selecione uma ferramenta</i>
+        </div>
+
+        <div class="tool-grid">
+          <button class="tool active" data-tool="inspect"><b>⌖</b><span>Inspecionar</span><kbd>V</kbd></button>
+          <button class="tool" data-tool="road"><b>╱</b><span>Estrada</span><kbd>R</kbd></button>
+          <button class="tool" data-tool="residential"><b>▦</b><span>Residencial</span><kbd>1</kbd></button>
+          <button class="tool" data-tool="commercial"><b>▤</b><span>Comercial</span><kbd>2</kbd></button>
+          <button class="tool" data-tool="industrial"><b>▥</b><span>Industrial</span><kbd>3</kbd></button>
+          <button class="tool" data-tool="bulldoze"><b>⌫</b><span>Demolir</span><kbd>B</kbd></button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="section-label">SERVIÇOS PÚBLICOS</div>
+        <div class="service-list">
+          <button class="service" data-tool="school"><span class="service-icon blue">✧</span><span><strong>Escola</strong><small>Educação · $ 1.200</small></span></button>
+          <button class="service" data-tool="clinic"><span class="service-icon pink">✚</span><span><strong>Clínica</strong><small>Saúde · $ 1.600</small></span></button>
+          <button class="service" data-tool="park"><span class="service-icon green">♧</span><span><strong>Parque</strong><small>Bem-estar · $ 500</small></span></button>
+          <button class="service" data-tool="police"><span class="service-icon violet">◆</span><span><strong>Segurança</strong><small>Segurança · $ 1.000</small></span></button>
+        </div>
+
+        <div class="tip">
+          <b>IDEIA</b><br />Cruzamentos bem conectados geram menos congestionamento e mais crescimento urbano.
+        </div>
+      </aside>
+
+      <section class="viewport-wrap">
+        <canvas id="cityCanvas"></canvas>
+        <div class="map-chips">
+          <span>▣ 2.4 km²</span>
+          <span id="weatherChip">☼ Céu limpo</span>
+        </div>
+
+        <div class="toast" id="toast"></div>
+
+        <div class="inspect-card glass hidden" id="inspectCard">
+          <button class="close" id="closeInspect">×</button>
+          <div class="eyebrow">VISÃO GERAL</div>
+          <h2 id="inspectTitle">Terreno vazio</h2>
+          <p id="inspectText">Escolha uma ferramenta e comece a expandir a cidade.</p>
+        </div>
+
+        <div class="bottom-bar glass">
+          <div class="legend">
+            <span><i class="dot res"></i>Residencial</span>
+            <span><i class="dot com"></i>Comercial</span>
+            <span><i class="dot ind"></i>Industrial</span>
+          </div>
+
+          <div class="time-controls">
+            <button id="pauseBtn">Ⅱ</button>
+            <button data-speed="1" class="speed active">1×</button>
+            <button data-speed="2" class="speed">2×</button>
+            <button data-speed="4" class="speed">4×</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-panel glass">
+        <div class="finance">
+          <div>
+            <small>CAIXA</small>
+            <strong id="money">$ 24.800</strong>
+          </div>
+          <span class="trend positive">↗ <b id="income">$ 320/dia</b></span>
+        </div>
+
+        <div class="metrics">
+          <div>
+            <small>POPULAÇÃO</small>
+            <strong id="population">24</strong>
+            <span id="popTrend">+2 hoje</span>
+          </div>
+          <div>
+            <small>FELICIDADE</small>
+            <strong id="happiness">78%</strong>
+            <span class="positive">estável</span>
+          </div>
+          <div>
+            <small>TRÁFEGO</small>
+            <strong id="traffic">12%</strong>
+            <span id="trafficState" class="positive">fluido</span>
+          </div>
+          <div>
+            <small>EMPREGO</small>
+            <strong id="jobs">18 / 24</strong>
+            <span id="jobState" class="positive">saudável</span>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-label">DEMANDA</div>
+
+        <div class="demand">
+          <label><span><i class="dot res"></i>Residencial</span><b id="resDemand">62%</b></label>
+          <div class="bar"><i class="res-fill" id="resBar"></i></div>
+
+          <label><span><i class="dot com"></i>Comercial</span><b id="comDemand">38%</b></label>
+          <div class="bar"><i class="com-fill" id="comBar"></i></div>
+
+          <label><span><i class="dot ind"></i>Industrial</span><b id="indDemand">28%</b></label>
+          <div class="bar"><i class="ind-fill" id="indBar"></i></div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="section-label">REDES</div>
+
+        <div class="utility">
+          <div><span>⚡ Energia</span><b id="power">● 100%</b></div>
+          <div><span>◒ Água</span><b id="water">● 100%</b></div>
+          <div><span>♨ Poluição</span><b id="pollution">● 8%</b></div>
+        </div>
+
+        <button class="wide-btn" id="heatBtn">⌁ Mostrar tráfego</button>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
 </html>
