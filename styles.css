@@ -21,6 +21,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   font-family: Manrope, Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body { overflow: hidden; }
@@ -30,6 +31,7 @@ button {
   color: inherit;
   font: inherit;
   cursor: pointer;
+  min-height: 40px;
 }
 
 .topbar {
@@ -185,9 +187,7 @@ button {
 
 .tool.active b { color: var(--accent); }
 
-.tool span {
-  font-size: 11px;
-}
+.tool span { font-size: 11px; }
 
 .tool kbd {
   position: absolute;
@@ -258,6 +258,9 @@ button {
   width: 100%;
   height: 100%;
   cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .map-chips {
@@ -500,4 +503,81 @@ button {
   height: 1px;
   background: var(--line);
   margin: 18px 0;
+}
+
+@media (max-width: 1100px) {
+  .shell {
+    grid-template-columns: 225px minmax(0, 1fr) 240px;
+  }
+
+  .topbar {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 820px) {
+  .topbar {
+    height: auto;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .shell {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(360px, 1fr) auto;
+    height: auto;
+    min-height: calc(100vh - 120px);
+  }
+
+  .left-panel, .right-panel {
+    padding: 12px 10px;
+  }
+
+  .viewport-wrap {
+    min-height: 58vh;
+  }
+
+  .city-title {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 4px;
+  }
+}
+
+@media (max-width: 520px) {
+  .left-panel, .right-panel {
+    padding: 10px 8px;
+  }
+
+  .tool-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .top-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .top-actions button {
+    flex: 1;
+  }
+
+  .bottom-bar {
+    height: auto;
+    padding: 8px 10px;
+    gap: 8px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .legend {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .time-controls {
+    justify-content: center;
+  }
 }
