@@ -2,26 +2,18 @@
 
 ## Etapas implementadas
 
-O protótipo agora cobre as etapas 2–5 em uma base única:
+Este protótipo já integra o núcleo da simulação urbana moderna em uma base jogável:
 
-- **Etapa 2 — Vida urbana:** agentes visuais representam moradores, alternam entre casa e trabalho e dependem de zonas existentes.
-- **Etapa 3 — Crescimento:** edifícios têm idade e nível; a evolução depende de acesso viário, demanda e passagem de dias.
-- **Etapa 4 — Infraestrutura:** energia, água, poluição, parques e serviços afetam os indicadores da cidade.
-- **Etapa 5 — Gestão:** receita diária, manutenção implícita, eventos periódicos, felicidade, congestionamento e mapa de tráfego.
+- **Etapa 2 — vida urbana:** agentes visuais representam trabalhadores em circulação entre casa e emprego.
+- **Etapa 3 — crescimento da cidade:** edifícios envelhecem e podem evoluir de nível conforme a demanda e a acessibilidade.
+- **Etapa 4 — infraestrutura:** energia, água, poluição, serviços públicos e gestão do ecossistema urbano.
+- **Etapa 5 — gestão e eventos:** renda diária, tendências econômicas, eventos aleatórios e pressões do tráfego.
+- **Etapa 6 — responsividade:** zoom, toque, mouse, tablet, iPadOS, layout móvel e instalação em tela inicial.
 
-Também foi incluído:
+## Como abrir
 
-- zoom por roda do mouse
-- interação por Pointer Events para mouse, caneta e toque
-- layout responsivo para iPad/iPadOS
-- manifest de aplicativo instalável
-- service worker para carregamento offline depois da primeira visita
-- salvamento local da cidade
-
-## Rodar no iPad
-
-Abra o repositório publicado em um navegador com HTTPS. No Safari, use **Compartilhar → Adicionar à Tela de Início**. Em desenvolvimento local, a instalação do service worker exige HTTPS ou `localhost`.
+Abra `index.html` em um navegador moderno. Em iPad/Safari, use **Compartilhar → Adicionar à Tela de Início**.
 
 ## Limite honesto
 
-Este é um jogo web/protótipo funcional, não um simulador AAA. As próximas etapas podem aprofundar rotas reais, semáforos, economia detalhada, campanhas, áudio, multiplayer e VR, mas cada uma deve ser testada separadamente para preservar estabilidade.
+Este é um protótipo funcional de simulator urbano web, não uma cópia de Cities: Skylines em nível comercial. Ele já oferece uma base sólida para expansão em semáforos, melhorias de tráfego, economia profunda, sistemas de políticas, clima, áudio e VR/MR.
